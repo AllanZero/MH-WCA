@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <title>Calculadora de Ataque</title>
+  </head>
+  
+  <script>
+    function funca() {
+	var listop = document.getElementById("choose");
+	listop.onclick = calcular;
+    }
+	window.onload = funca;
+      
+    function calcular() {
+      var Attack = document.getElementById("Ataque").value;
+      var Critical = document.getElementById("Critico").value;
+      var Sharpness = filo.value;
+      var arma = wpnType.options[wpnType.selectedIndex].text;
+      var tipo = wpnType.value;
+	  var ctlProb = 0.0025;
+      var artillero;
+      if (arma == "Arco" || arma == "Ballesta ligera" || arma == "Ballesta pesada") {
+        Sharpness = 1;
+      }
+      var resultado = (Attack * Sharpness * (Critical * ctlProb + 1)) / tipo;
+      var p = document.createElement("p");
+      document.body.appendChild(p);
+      p.textContent = "Su " + arma + " tiene " + Math.floor(resultado * tipo) + " de ataque y " + Math.floor(resultado) + " de 'ataque real'.";
+    }
+
+  </script>
+  
+  <body>
+    <h1>Calcular el ataque</h1>
+    <p>Ingresar los datos antes de elejir.</p>
+	<form>
+      <select id="wpnType">
+        <option value= "4.8">Gran espada</option>
+        <option value= "3.3">Espada larga</option>
+        <option value= "1.4">Espada y escudo</option>
+        <option value= "5.4">Hacha espada</option>
+        <option value= "5.2">Martillo</option>
+        <option value= "5.2">Cornamusa</option>
+        <option value= "2.3">Lanza</option>
+        <option value= "2.3">Lanza pistola</option>
+        <option value= "3.1">Glaive Insecto</option>
+        <option value= "3.6">Hacha cargada</option>
+        <option value= "1.2">Arco</option>
+        <option value= "1.3">Ballesta ligera</option>
+        <option value= "1.5">Ballesta pesada</option>
+      </select> <br><br>
+      <input type="text" id="Ataque" size="20" placeholder="Ataque del arma"><br><br>		  <input type="text" id="Critico" size="20" placeholder="% de critico"><br><br>
+	  <select id="filo">
+        <option value= "1.44">Morado</option>
+        <option value= "1.32">Blanco</option>
+        <option value= "1.2">Azul</option>
+        <option value= "1.05">Verde</option>
+        <option value= "1">Amarillo</option>
+        <option value= "0.75">Naranja</option>
+        <option value= "0.5">Rojo</option>
+      </select><br><br>
+      <input type="button" id="choose" value="Elejir">
+	</form>
+  </body>
+</html>
